@@ -8,8 +8,11 @@ test('GS_TC_006 - Verify user can create a new post @functional @ui', async ({ p
   await page.locator("a[href='/add-post']").click();
   await expect(page).toHaveURL(/add-post/);
 
-  // fill form (correct placeholders)
-  await page.locator("input[placeholder='Title']").fill('Playwright Test Post');
+  // unique test data (IMPORTANT FIX)
+  const title = `Playwright Test Post ${Date.now()}`;
+
+  // fill form
+  await page.locator("input[placeholder='Title']").fill(title);
   await page.locator("input[placeholder='Your Name']").fill('QA Tester');
   await page.locator("textarea[placeholder='Write your story...']").fill(
     'This is an automated test post created by Playwright.'
@@ -18,13 +21,12 @@ test('GS_TC_006 - Verify user can create a new post @functional @ui', async ({ p
   // submit form
   await page.locator("button[type='submit']").click();
 
-  // verify redirect or success behavior
+  // verify redirect
   await expect(page).toHaveURL(/\/$/);
-  
-  // verify post appears
+
+  // verify post appears (fix strict mode issue)
   await expect(
-    page.locator('li a', { hasText: 'Playwright Test Post' })
+    page.locator('li a', { hasText: title }).first()
   ).toBeVisible();
-await page.waitForTimeout(5000)
 
 });

@@ -64,7 +64,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"title\": \"Playwright create Post test\",\r\n  \"username\": \"QA Tester\",\r\n  \"story\": \"This is an automated test post created by Playwright.\"\r\n}",
+          "raw": "{\r\n  \"title\": \"Postman create Post test\",\r\n  \"username\": \"QA Tester\",\r\n  \"story\": \"This is an automated test post created by Postman.\"\r\n}",
           "options": {
             "raw": {
               "language": "json"

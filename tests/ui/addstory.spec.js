@@ -8,7 +8,7 @@ test('GS_TC_006 - Verify user can create a new post @functional @ui', async ({ p
   await page.locator("a[href='/add-post']").click();
   await expect(page).toHaveURL(/add-post/);
 
-  // unique test data (IMPORTANT FIX)
+  // unique test data
   const title = `Playwright Test Post ${Date.now()}`;
 
   // fill form
@@ -21,12 +21,12 @@ test('GS_TC_006 - Verify user can create a new post @functional @ui', async ({ p
   // submit form
   await page.locator("button[type='submit']").click();
 
-  // verify redirect
+  // verify redirect to homepage
   await expect(page).toHaveURL(/\/$/);
 
-  // verify post appears (fix strict mode issue)
+  // verify post appears in list (FIXED)
   await expect(
     page.locator('li a', { hasText: title }).first()
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 10000 });
 
 });

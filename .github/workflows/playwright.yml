@@ -32,7 +32,7 @@ jobs:
       run: npm install -g newman
 
     - name: Run Postman collection
-      run: newman run GhostStories.postman_collection.json
+      run:  GhostStoryCollection.postman_collection
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}

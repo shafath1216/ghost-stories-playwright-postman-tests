@@ -28,8 +28,8 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "httsp://ghost-stories.org/api/posts",
-          "protocol": "httsp",
+          "raw": "https://ghost-stories.org/api/posts",
+          "protocol": "https",
           "host": [
             "ghost-stories",
             "org"
